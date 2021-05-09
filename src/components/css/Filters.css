@@ -1,0 +1,30 @@
+.Filter{
+    width: 90%;
+   display: flex;
+   justify-content: space-evenly; 
+   background-color: #3F8FFF ;
+   padding: 10px 0;
+   font-weight: bold;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: none;
+  }
+input, select{
+    outline: none;
+    border-radius: 0px 8px 8px 0px;
+    border: none;
+    padding:5px;
+    width: 100%;
+}
+.Filter div{
+    display: flex;
+    align-items: stretch;
+    width: auto;
+}
+.Filter svg{
+    background-color: white;
+    color:#e6eaec;
+    height: 100%;
+    border-radius: 8px 0px 0px 8px;
+    font-size: 20px;
+}
