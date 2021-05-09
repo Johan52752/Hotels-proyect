@@ -12,23 +12,24 @@ function App() {
   const [country, setCountry]=useState("Cualquier pais");
   const [price, setPrice]=useState("Cualquier precio");
   const [size, setSize]=useState("Cualquier tamaño");
-  console.log(availabilityFrom)
-  console.log(availabilityTo)
-  console.log(country)
-  console.log(price)
-  console.log(size)
+  
   const handlerDateFrom=(e)=>{
     setAvailabilityFrom(e.target.value)
   }
   const handlerDateTo=(e)=>{
     if(availabilityFrom ){
-      setAvailabilityTo(e.target.value) ;
+      if(new Date(e.target.value)< new Date(availabilityFrom)){
+        alert("Tienes que poner una fecha de salida mayor a la fecha de entrada")
+      }else{
+        setAvailabilityTo(e.target.value)
+      }
     }else{
       alert("Tienes que colocar primero la fecha de entrada");
     }
   }
   const handlerCountry=(e)=>{
     if(availabilityFrom && availabilityTo){
+      
       setCountry(e.target.value) ;
     }else{
       alert("Tienes que colocar las 2 fechas primero antes de aplicar los filtros");
@@ -40,6 +41,7 @@ function App() {
     }else{
       alert("Tienes que colocar las 2 fechas primero para aplicar los filtros")
     }
+    
   }
   const handlerSize=(e)=>{
     if(availabilityFrom && availabilityTo){
@@ -100,6 +102,7 @@ function App() {
           hotelFilter.length>0 ? hotelFilter.map((hotel, index) => {
             return (
               <Hotels
+                key={index}
                 photo={hotel.photo}
                 name={hotel.name}
                 description={hotel.description}

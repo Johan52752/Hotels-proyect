@@ -6,9 +6,7 @@
    padding: 10px 0;
    font-weight: bold;
 }
-input[type="date"]::-webkit-calendar-picker-indicator {
-    background: none;
-  }
+
 input, select{
     outline: none;
     border-radius: 0px 8px 8px 0px;
@@ -27,4 +25,10 @@ input, select{
     height: 100%;
     border-radius: 8px 0px 0px 8px;
     font-size: 20px;
+}
+@media (max-width:800px) {
+    .Filter{
+        width: 100%;
+        
+    }
 }

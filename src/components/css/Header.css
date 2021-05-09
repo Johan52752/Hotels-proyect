@@ -4,3 +4,8 @@
     color:white;
     padding:40px;
 }
+@media (max-width:800px){
+    .Header{
+        width: 100%;
+    }
+}

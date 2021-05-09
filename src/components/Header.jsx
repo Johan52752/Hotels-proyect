@@ -27,11 +27,11 @@ export function Header(props){
     let price;
     if (props.price!=="Cualquier precio") {
         if (props.price==="1") {
-            price="de precio economico"
+            price="con precio economico"
         }else if(props.price==="2" || props.price==="3"){
-            price="de precio intermedio"
+            price="con precio intermedio"
         }else {
-            price="de precio alto"
+            price="con precio alto"
         }
     }else{
         price=""
