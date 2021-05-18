@@ -3,9 +3,9 @@ import './css/Header.css'
 export function Header(props){
     let month = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     let fechaInitial=new Date(props.dateFrom);
-    fechaInitial=(fechaInitial.getDate()+1)+" de "+(month[fechaInitial.getMonth()-1])+" del " + fechaInitial.getFullYear();
+    fechaInitial=(fechaInitial.getDate()+1)+" de "+(month[fechaInitial.getMonth()])+" del " + fechaInitial.getFullYear();
     let fechaSecondary=new Date(props.dateTo);
-    fechaSecondary=(fechaSecondary.getDate()+1)+" de "+(month[fechaSecondary.getMonth()-1])+" del " + fechaSecondary.getFullYear();
+    fechaSecondary=(fechaSecondary.getDate()+1)+" de "+(month[fechaSecondary.getMonth()])+" del " + fechaSecondary.getFullYear();
     let country;
     if (props.country!=="Cualquier pais") {
         country=", en "+props.country;

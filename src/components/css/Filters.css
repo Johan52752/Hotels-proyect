@@ -1,23 +1,30 @@
 .Filter{
     width: 90%;
    display: flex;
-   justify-content: space-evenly; 
+   flex-direction: column;
+   justify-content: space-between;
    background-color: #3F8FFF ;
-   padding: 10px 0;
+   padding: 10px 0px;
    font-weight: bold;
+}
+.Filters{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 input, select{
     outline: none;
-    border-radius: 0px 8px 8px 0px;
+    border-radius: 0px 12px 12px 0px;
     border: none;
     padding:5px;
     width: 100%;
 }
 .Filter div{
     display: flex;
+    height: 40px;
     align-items: stretch;
-    width: auto;
 }
 .Filter svg{
     background-color: white;
@@ -25,10 +32,34 @@ input, select{
     height: 100%;
     border-radius: 8px 0px 0px 8px;
     font-size: 20px;
+    width: 100%;
+}
+.disabled{
+    display:none;
+}
+.enabled{
+    outline: none;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    border: 2px solid #3F8FFF;
+    font-weight: bold;
+    width: 200px;
+    align-self: center;
+    height: 40px;
+    background-size: cover;
+    background-color: white;
+}
+.enabled:hover{
+    cursor: pointer;
+    background-color:#3F8FFF ;
+    border: 2px solid ;
+    color:white;
 }
 @media (max-width:800px) {
     .Filter{
         width: 100%;
-        
+    }
+    .Filters div{
+        width: 100px;
     }
 }

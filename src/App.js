@@ -1,10 +1,9 @@
-import logo from "./logo.svg";
 import { Header } from "./components/Header.jsx";
 import { Filters } from "./components/Filters.jsx";
 import { Hotels } from "./components/hotels.jsx";
 import { hotelsData } from "./scripts/data.js";
-import "./App.css";
 import { useState } from "react";
+import "./App.css";
 
 function App() {
   const [availabilityFrom, setAvailabilityFrom]=useState(0);
@@ -12,7 +11,7 @@ function App() {
   const [country, setCountry]=useState("Cualquier pais");
   const [price, setPrice]=useState("Cualquier precio");
   const [size, setSize]=useState("Cualquier tamaño");
-  
+  // const [reset, setReset]=useState(false);
   const handlerDateFrom=(e)=>{
     setAvailabilityFrom(e.target.value)
   }
@@ -29,7 +28,6 @@ function App() {
   }
   const handlerCountry=(e)=>{
     if(availabilityFrom && availabilityTo){
-      
       setCountry(e.target.value) ;
     }else{
       alert("Tienes que colocar las 2 fechas primero antes de aplicar los filtros");
@@ -51,6 +49,14 @@ function App() {
       
     }
   }
+  // const handlerReset=(e)=>{
+  //   setAvailabilityFrom(0)
+  //   setAvailabilityTo(0)
+  //   setCountry("Cualquier pais")
+  //   setPrice("Cualquier precio")
+  //   setSize("Cualquier Tamaño")
+  //   e.target.className="disabled";
+  // }
   let hotelFilter;
   if(availabilityFrom && availabilityTo) {
       hotelFilter=hotelsData.filter(hotel=>{
@@ -95,10 +101,10 @@ function App() {
         stateCountry={[country,handlerCountry ]}
         statePrice={[price,handlerPrice ]}
         stateSize={[size,handlerSize ]}
+        
       />
       <div className="Hotels">
         {
-          
           hotelFilter.length>0 ? hotelFilter.map((hotel, index) => {
             return (
               <Hotels
@@ -113,9 +119,7 @@ function App() {
                 />
             );
           }) : (
-            
               <p>No se encontraron resultados</p>
-            
           )
         }
       </div>
