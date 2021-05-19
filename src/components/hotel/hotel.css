@@ -82,10 +82,29 @@
     width: 80%;
     justify-content: space-between;
     flex-wrap: wrap;
+    align-items: flex-start;
 }
 @media (max-width:1100px) {
     .options-secondary{
         flex: 1;
-        align-items: center;
+    }
+}
+@media (max-width:599px){
+    .card{
+        width: 90%;
+    }
+    .details{
+        font-size: 1.5rem;
+    }
+    .options-secondary{
+        width: 60%;  
+        margin-top: 10px;
+    }
+    .options{
+        margin-top: 20px;
+    }
+    .card button{
+        font-size: 1.5rem;
+        height: 70px;
     }
 }
