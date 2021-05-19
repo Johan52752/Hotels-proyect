@@ -1,4 +1,4 @@
-import './css/Header.css'
+import './Header.css'
 
 export function Header(props){
     let month = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];

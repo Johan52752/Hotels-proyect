@@ -1,10 +1,10 @@
-import './css/hotels.css'
+import './hotel.css'
 import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { faBed } from "@fortawesome/free-solid-svg-icons";
 import { faMapMarked } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export function Hotels(props){
+export function Hotel(props){
     return(
         <div className="card">
             <img src={props.photo} alt="img-hotel"/>

@@ -1,6 +1,6 @@
-import { Header } from "./components/Header.jsx";
-import { Filters } from "./components/Filters.jsx";
-import { Hotels } from "./components/hotels.jsx";
+import { Header } from "./components/header/Header.jsx";
+import { Filters } from "./components/filters/Filters.jsx";
+import { Hotel } from "./components/hotel/Hotel.jsx";
 import { hotelsData } from "./scripts/data.js";
 import { useState } from "react";
 import "./App.css";
@@ -76,13 +76,10 @@ function App() {
         if (size=="Cualquier tamaño") {
           conditionSize=true;
         }else if(size==="Hotel pequeño"){
-          console.log("pequeño")
           conditionSize=(hotel.rooms<=10 );
         }else if(size==="Hotel mediano"){
-          console.log("mediano")
           conditionSize=(hotel.rooms<=20 && hotel.rooms>10)
         }else if(size==="Hotel grande"){
-          console.log("grande")
           conditionSize=(hotel.rooms>20)
         }
         
@@ -101,13 +98,12 @@ function App() {
         stateCountry={[country,handlerCountry ]}
         statePrice={[price,handlerPrice ]}
         stateSize={[size,handlerSize ]}
-        
       />
       <div className="Hotels">
         {
           hotelFilter.length>0 ? hotelFilter.map((hotel, index) => {
             return (
-              <Hotels
+              <Hotel
                 key={index}
                 photo={hotel.photo}
                 name={hotel.name}
