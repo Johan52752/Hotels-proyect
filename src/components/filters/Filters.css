@@ -55,6 +55,9 @@ input, select{
     border: 2px solid ;
     color:white;
 }
+.Filters div{
+   width: 200px; 
+}
 @media (max-width:800px) {
     .Filter{
         width: 100%;

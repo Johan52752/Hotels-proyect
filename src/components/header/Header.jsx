@@ -42,9 +42,7 @@ export function Header(props){
             <h1>Hoteles</h1>
             <p>{
             props.dateFrom && props.dateTo ?  `Busqueda de hoteles ${size} ${price} desde el ${fechaInitial} hasta el ${fechaSecondary}${country}`: ("Busqueda de todos los hoteles")
-            
             }</p>
-            
         </div>
     )
 }

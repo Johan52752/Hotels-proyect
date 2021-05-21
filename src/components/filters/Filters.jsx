@@ -47,7 +47,7 @@ export function Filters(props){
                         <option value="Hotel grande">Hotel grande</option>
                     </select>
                 </div>
-                
+                <button onClick={props.handlerReset}>Reset</button>
             </div>
         </div>
     )
