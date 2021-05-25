@@ -74,14 +74,14 @@ function App() {
           (dateHotelFrom.getMonth() + 1) +
           "-" +
           (dateHotelFrom.getDate() - 1)
-      ).getTime();
+      ).getTime();//Elimino tiempos y segundos de la fecha de entrada de los hoteles, pasandole un formato unicamente con año, mes y dia, y luego lo convierto a tiempo UNIX
       const dateHotelToInUnix = new Date(
         dateHotelTo.getFullYear() +
           "-" +
           (dateHotelTo.getMonth() + 1) +
           "-" +
           dateHotelTo.getDate()
-      ).getTime();
+      ).getTime();//Elimino tiempos y segundos de la fecha de salida de los hoteles, pasandole un formato unicamente con año, mes y dia, y luego lo convierto a tiempo UNIX
       
       return (
         dateFrom >= dateHotelFromInUnix &&
