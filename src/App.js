@@ -100,16 +100,16 @@ function App() {
       switch(size){
         case "Cualquier tamaño":
           return true;
-          break;
+          
         case "Hotel pequeño":
           return hotelSize <= 10;
-          break;
+          
         case "Hotel mediano" :
           return hotelSize <= 20 && hotelSize > 10;
-          break;
+          
         case "Hotel grande":
           return hotelSize > 20;
-          break;
+          
       }
     };
     hotelFilter = hotelsData.filter((hotel) => {
