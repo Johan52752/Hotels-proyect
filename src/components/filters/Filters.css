@@ -21,6 +21,20 @@ input, select{
     padding:5px;
     width: 100%;
 }
+.button{
+    width: 100px;
+    border-radius: 12px;
+    outline: none;
+    border:none;
+    font-weight: bold;
+    background-color: white;
+}
+.button:hover{
+    cursor: pointer;
+    color:white;
+    background-color: #3F8FFF;
+    border: 2px solid white;
+}
 .Filter div{
     display: flex;
     height: 40px;

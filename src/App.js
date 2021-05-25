@@ -53,77 +53,79 @@ function App() {
       );
     }
   };
-  const handlerReset = (e) => {
+  const handlerReset = () => {
     setAvailabilityFrom("");
     setAvailabilityTo("");
     setCountry("Cualquier pais");
     setPrice("Cualquier precio");
-    setSize("Cualquier Tamaño");
+    setSize("Cualquier tamaño");
   };
+  
 
   if (availabilityFrom && availabilityTo) {
-    const conditionDate = (from, to, hotelFrom, hotelTo) => {
-      let dateFrom = new Date(from).getTime(); //convierto a tiempo UNIX la fecha de entrada
-      let dateTo = new Date(to).getTime(); //convierto a tiempo UNIX la fecha de salida
-      let dateHotelFrom = new Date(hotelFrom);
-      let dateHotelTo = new Date(hotelTo);
-      dateHotelFrom = new Date(
+    const filterByDate = (hotelDateFrom, hotelDateTo) => {
+      const dateFrom = new Date(availabilityFrom).getTime(); //convierto a tiempo UNIX la fecha de entrada
+      const dateTo = new Date(availabilityTo).getTime(); //convierto a tiempo UNIX la fecha de salida
+      const dateHotelFrom = new Date(hotelDateFrom);
+      const dateHotelTo = new Date(hotelDateTo);
+      const dateHotelFromInUnix = new Date(
         dateHotelFrom.getFullYear() +
           "-" +
           (dateHotelFrom.getMonth() + 1) +
           "-" +
           (dateHotelFrom.getDate() - 1)
       ).getTime();
-      dateHotelTo = new Date(
+      const dateHotelToInUnix = new Date(
         dateHotelTo.getFullYear() +
           "-" +
           (dateHotelTo.getMonth() + 1) +
           "-" +
           dateHotelTo.getDate()
       ).getTime();
+      
       return (
-        dateFrom >= dateHotelFrom &&
-        dateFrom < dateHotelTo &&
-        dateTo > dateHotelFrom &&
-        dateTo <= dateHotelTo
+        dateFrom >= dateHotelFromInUnix &&
+        dateFrom < dateHotelToInUnix &&
+        dateTo > dateHotelFromInUnix &&
+        dateTo <= dateHotelToInUnix
       );
     };
-    const conditionCountry = (country, hotelCountry) => {
+    const filterByCountry = (hotelCountry) => {
       return country === "Cualquier pais" ? true : hotelCountry === country;
     };
-    const conditionPrice = (price, hotelPrice) => {
+    const filterByPrice = (hotelPrice) => {
       return price === "Cualquier precio" ? true : hotelPrice == price;
     };
-    let conditionSize = (size, hotelSize) => {
-      if (size == "Cualquier tamaño") {
-        return true;
-      } else if (size === "Hotel pequeño") {
-        return hotelSize <= 10;
-      } else if (size === "Hotel mediano") {
-        return hotelSize <= 20 && hotelSize > 10;
-      } else if (size === "Hotel grande") {
-        return hotelSize > 20;
+    let filterBySize = (hotelSize) => {
+      switch(size){
+        case "Cualquier tamaño":
+          return true;
+          break;
+        case "Hotel pequeño":
+          return hotelSize <= 10;
+          break;
+        case "Hotel mediano" :
+          return hotelSize <= 20 && hotelSize > 10;
+          break;
+        case "Hotel grande":
+          return hotelSize > 20;
+          break;
       }
     };
     hotelFilter = hotelsData.filter((hotel) => {
       return (
-        conditionDate(
-          availabilityFrom,
-          availabilityTo,
+        filterByDate(
           hotel.availabilityFrom,
           hotel.availabilityTo
         ) &&
-        conditionCountry(country, hotel.country) &&
-        conditionPrice(price, hotel.price) &&
-        conditionSize(size, hotel.rooms)
+        filterByCountry(hotel.country) &&
+        filterByPrice(hotel.price) &&
+        filterBySize(hotel.rooms)
       );
     });
   } else {
     hotelFilter = hotelsData;
   }
-
-  console.log(hotelFilter);
-  console.log(availabilityFrom, availabilityTo);
   return (
     <div className="App">
       <Header

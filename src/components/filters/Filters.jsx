@@ -47,7 +47,11 @@ export function Filters(props){
                         <option value="Hotel grande">Hotel grande</option>
                     </select>
                 </div>
-                <button onClick={props.handlerReset}>Reset</button>
+                <button
+                    className={`button ${props.stateFrom[0]&&props.stateTo[0]?"":"disabled"}`}
+                    onClick={props.handlerReset}>
+                    Resetear filtros
+                </button>
             </div>
         </div>
     )
