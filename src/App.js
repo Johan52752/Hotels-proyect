@@ -66,17 +66,17 @@ function App() {
 
   if (availabilityFrom && availabilityTo) {
     const filterByDate = (hotelDateFrom, hotelDateTo) => {
-      const dateFrom = new Date(`${availabilityFrom} 00:00:00`).getTime(); //convierto a tiempo UNIX la fecha de entrada
-      const dateTo = new Date(`${availabilityTo} 00:00:00`).getTime(); //convierto a tiempo UNIX la fecha de salida
+      const dateUserFrom = new Date(`${availabilityFrom} 00:00:00`).getTime(); //convierto a tiempo UNIX la fecha de entrada
+      const dateUserTo = new Date(`${availabilityTo} 00:00:00`).getTime(); //convierto a tiempo UNIX la fecha de salida
       const dateHotelFrom = new Date(hotelDateFrom);
       const dateHotelTo = new Date(hotelDateTo);
       const dateHotelFromInUnix = new Date(dateToFormatString(dateHotelFrom)).getTime();//Elimino tiempos y segundos de la fecha de entrada de los hoteles, pasandole un formato unicamente con año, mes y dia, y luego lo convierto a tiempo UNIX
       const dateHotelToInUnix = new Date(dateToFormatString(dateHotelTo)).getTime();//Elimino tiempos y segundos de la fecha de salida de los hoteles, pasandole un formato unicamente con año, mes y dia, y luego lo convierto a tiempo UNIX
       return (
-        dateFrom >= dateHotelFromInUnix &&
-        dateFrom < dateHotelToInUnix &&
-        dateTo > dateHotelFromInUnix &&
-        dateTo <= dateHotelToInUnix
+        dateUserFrom >= dateHotelFromInUnix &&
+        dateUserFrom < dateHotelToInUnix &&
+        dateUserTo > dateHotelFromInUnix &&
+        dateUserTo <= dateHotelToInUnix
       );
     };
     const filterByCountry = (hotelCountry) => {
