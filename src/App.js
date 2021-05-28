@@ -17,7 +17,7 @@ function App() {
   };
   const handlerDateTo = (e) => {
     if (availabilityFrom) {
-      if (new Date(e.target.value) < new Date(availabilityFrom)) {
+      if (new Date(`${e.target.value} 00:00:00`) <= new Date(`${availabilityFrom} 00:00:00`)) {
         alert(
           "Tienes que poner una fecha de salida mayor a la fecha de entrada"
         );
