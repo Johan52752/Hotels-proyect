@@ -60,29 +60,18 @@ function App() {
     setPrice("Cualquier precio");
     setSize("Cualquier tamaño");
   };
-  
+  const dateToFormatString=(date)=>{
+    return (`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} 00:00:00`)
+  }
 
   if (availabilityFrom && availabilityTo) {
     const filterByDate = (hotelDateFrom, hotelDateTo) => {
-      const dateFrom = new Date(availabilityFrom).getTime(); //convierto a tiempo UNIX la fecha de entrada
-      const dateTo = new Date(availabilityTo).getTime(); //convierto a tiempo UNIX la fecha de salida
+      const dateFrom = new Date(`${availabilityFrom} 00:00:00`).getTime(); //convierto a tiempo UNIX la fecha de entrada
+      const dateTo = new Date(`${availabilityTo} 00:00:00`).getTime(); //convierto a tiempo UNIX la fecha de salida
       const dateHotelFrom = new Date(hotelDateFrom);
       const dateHotelTo = new Date(hotelDateTo);
-      const dateHotelFromInUnix = new Date(
-        dateHotelFrom.getFullYear() +
-          "-" +
-          (dateHotelFrom.getMonth() + 1) +
-          "-" +
-          (dateHotelFrom.getDate() - 1)
-      ).getTime();//Elimino tiempos y segundos de la fecha de entrada de los hoteles, pasandole un formato unicamente con año, mes y dia, y luego lo convierto a tiempo UNIX
-      const dateHotelToInUnix = new Date(
-        dateHotelTo.getFullYear() +
-          "-" +
-          (dateHotelTo.getMonth() + 1) +
-          "-" +
-          dateHotelTo.getDate()
-      ).getTime();//Elimino tiempos y segundos de la fecha de salida de los hoteles, pasandole un formato unicamente con año, mes y dia, y luego lo convierto a tiempo UNIX
-      
+      const dateHotelFromInUnix = new Date(dateToFormatString(dateHotelFrom)).getTime();//Elimino tiempos y segundos de la fecha de entrada de los hoteles, pasandole un formato unicamente con año, mes y dia, y luego lo convierto a tiempo UNIX
+      const dateHotelToInUnix = new Date(dateToFormatString(dateHotelTo)).getTime();//Elimino tiempos y segundos de la fecha de salida de los hoteles, pasandole un formato unicamente con año, mes y dia, y luego lo convierto a tiempo UNIX
       return (
         dateFrom >= dateHotelFromInUnix &&
         dateFrom < dateHotelToInUnix &&
