@@ -13,11 +13,17 @@ function App() {
   const [size, setSize] = useState("Cualquier tamaño");
   let hotelFilter = [];
   const handlerDateFrom = (e) => {
-    setAvailabilityFrom(e.target.value);
+    if (availabilityTo && new Date(`${e.target.value} 00:00:00`) > new Date(`${availabilityTo} 00:00:00`)) {
+      alert(
+        "Tienes que poner una fecha de salida mayor a la fecha de entrada"
+      );
+    } else {
+      setAvailabilityFrom(e.target.value);
+    }
   };
   const handlerDateTo = (e) => {
     if (availabilityFrom) {
-      if (new Date(`${e.target.value} 00:00:00`) >= new Date(`${availabilityFrom} 00:00:00`)) {
+      if (new Date(`${e.target.value} 00:00:00`) <= new Date(`${availabilityFrom} 00:00:00`)) {
         alert(
           "Tienes que poner una fecha de salida mayor a la fecha de entrada"
         );
@@ -29,29 +35,16 @@ function App() {
     }
   };
   const handlerCountry = (e) => {
-    if (availabilityFrom && availabilityTo) {
-      setCountry(e.target.value);
-    } else {
-      alert(
-        "Tienes que colocar las 2 fechas primero antes de aplicar los filtros"
-      );
-    }
+    setCountry(e.target.value);
+    
   };
   const handlerPrice = (e) => {
-    if (availabilityFrom && availabilityTo) {
-      setPrice(e.target.value);
-    } else {
-      alert("Tienes que colocar las 2 fechas primero para aplicar los filtros");
-    }
+    setPrice(e.target.value);
+    
   };
   const handlerSize = (e) => {
-    if (availabilityFrom && availabilityTo) {
-      setSize(e.target.value);
-    } else {
-      alert(
-        "Tienes que colocar las 2 fechas primero antes de aplicar los filtros"
-      );
-    }
+    setSize(e.target.value);
+    
   };
   const handlerReset = () => {
     setAvailabilityFrom("");
@@ -64,7 +57,7 @@ function App() {
     return (`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} 00:00:00`)
   }
 
-  if (availabilityFrom && availabilityTo) {
+  
     const filterByDate = (hotelDateFrom, hotelDateTo) => {
       const dateUserFrom = new Date(`${availabilityFrom} 00:00:00`).getTime(); //convierto a tiempo UNIX la fecha de entrada
       const dateUserTo = new Date(`${availabilityTo} 00:00:00`).getTime(); //convierto a tiempo UNIX la fecha de salida
@@ -103,18 +96,13 @@ function App() {
     };
     hotelFilter = hotelsData.filter((hotel) => {
       return (
-        filterByDate(
-          hotel.availabilityFrom,
-          hotel.availabilityTo
-        ) &&
+        availabilityFrom && availabilityTo ? filterByDate(hotel.availabilityFrom,hotel.availabilityTo):true &&
         filterByCountry(hotel.country) &&
         filterByPrice(hotel.price) &&
         filterBySize(hotel.rooms)
       );
     });
-  } else {
-    hotelFilter = hotelsData;
-  }
+
   return (
     <div className="App">
       <Header

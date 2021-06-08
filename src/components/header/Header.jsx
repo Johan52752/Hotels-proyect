@@ -36,12 +36,11 @@ export function Header(props){
     }else{
         price=""
     }
-    
     return(
         <div className="Header">
             <h1>Hoteles</h1>
             <p>{
-            props.dateFrom && props.dateTo ?  `Busqueda de hoteles ${size} ${price} desde el ${fechaInitial} hasta el ${fechaSecondary}${country}`: ("Busqueda de todos los hoteles")
+            props.dateFrom && props.dateTo ?  `Busqueda de hoteles ${size} ${price} desde el ${fechaInitial} hasta el ${fechaSecondary}${country}`: `Busqueda de hoteles ${size} ${price} ${country}`
             }</p>
         </div>
     )
